@@ -13,8 +13,14 @@ public class UsuarioNegocio {
 	public boolean adicionarUsuario(Usuario u) {
 		boolean adicionado = false;
 
-		if (u.getNomeCompleto() != null && u.getEmail() != null  && 
+		if (u.getNomeCompleto() != null && 
+				u.getEmail() != null  && 
 				u.getCpf() != null &&
+//				u.getCpf().length() >= 11 &&
+//				u.getCpf().length() <= 11 &&
+//				u.getDdd() >= 0 &&
+//				u.getTelefone().equals(null) != true &&
+
 				this.userRepo.buscarPorCPF(u.getCpf()) == null) {
 			adicionado = this.userRepo.addUsuario(u);
 		}
