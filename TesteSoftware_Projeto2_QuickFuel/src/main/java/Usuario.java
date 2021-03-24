@@ -11,10 +11,10 @@ public class Usuario {
 	private Date nasc;
 	private List<placaveiculo> placaveiculos;
 	private String senha;
-	private Integer telefone;
+	private String telefone;
 	private int ddd;
 
-	public Usuario(String nomecompleto, String cpf, String email, int ddd, Integer telefone) {
+	public Usuario(String nomecompleto, String cpf, String email, int ddd, String telefone) {
 		this.nomecompleto = nomecompleto;
 		this.email = email;
 		this.cpf = cpf;
@@ -62,11 +62,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public int getDdd() {
