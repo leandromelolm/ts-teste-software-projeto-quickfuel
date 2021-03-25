@@ -23,9 +23,8 @@ public class UsuarioNegocio {
 //		System.out.println(numeroconvertido);
 //		Date dataAtualSistema = new Date(System.currentTimeMillis());
 //		System.out.println(dataAtualSistema);
-//		int ano = LocalDate.now(). getYear ();
-//		int mes = LocalDate.now().getMonthValue();
-//		System.out.print(ano +"  " + mes + "  " );
+
+
 
 		if (	u.getNomeCompleto() != null 
 			&&	u.getEmail() != null  

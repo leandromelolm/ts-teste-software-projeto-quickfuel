@@ -21,9 +21,9 @@ public class CartaoCreditoRepositorio {
 	}
 	public CartaoCredito buscarPorNumero(String numero) {
 		CartaoCredito c = null;
-		for (CartaoCredito cred : this.credcartoes) {
-			if (cred.getNumero().equals(numero)) {
-				c = cred;
+		for (CartaoCredito cart : this.credcartoes) {
+			if (cart.getNumero().equals(numero)) {
+				c = cart;
 			}
 		}
 		return c;

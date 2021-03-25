@@ -5,45 +5,50 @@ import java.util.Date;
 
 public class CartaoCreditoNegocio {
 
-	private CartaoCreditoRepositorio cardRepo;
+	private CartaoCreditoRepositorio cartRepo;
 	
 	public CartaoCreditoNegocio(CartaoCreditoRepositorio caRepo) {
-		this.cardRepo = caRepo;
+		this.cartRepo = caRepo;
 	}
 	
 	public boolean adicionarCartaoCredito(CartaoCredito c) {
 		boolean adicionado = false;
 //		Date dataAtualSistema = new Date(System.currentTimeMillis());
 //		System.out.println(dataAtualSistema);
-		int ano = LocalDate.now (). getYear ();
+		int ano = LocalDate.now().getYear();
 		int mes = LocalDate.now().getMonthValue();
+//		System.out.print(ano +" " + mes + " ");
 		
 		
 		if (   c.getNumero() != null
 			&& c.getNumero().length() == 16
+			&& c.getNumero().matches("[0-9]+")
 			&& c.getBandeira() != null	
-//			&& c.getDataExpiracaoAno() > ano
-			&& 	this.cardRepo.buscarPorNumero(c.getNumero()) == null){
-			if (	   c.getDataExpiracaoAno() > ano
-//					|| c.getDataExpiracaoAno() == ano 
-//					&& c.getDataExpiracaoMes() >= mes 
-					){
+			&& 	this.cartRepo.buscarPorNumero(c.getNumero()) == null
+				){
 				if(        c.getBandeira().contains("VISA")
 						|| c.getBandeira().contains("MASTERCARD")
 						|| c.getBandeira().contains("ELO")
 						|| c.getBandeira().contains("HIPERCARD")
-						){
-					adicionado = this.cardRepo.addCartaoCredito(c);
-				}	
-			}
-		}
-			
+						|| c.getBandeira().contains("AMERICAN EXPRESS")
+					){
+					if(   c.getDataExpiracaoAno() > ano) {
+					        adicionado = this.cartRepo.addCartaoCredito(c);
+				
+					}else {
+						if(c.getDataExpiracaoAno() == ano
+								&& c.getDataExpiracaoMes() >= mes) {
+							adicionado = this.cartRepo.addCartaoCredito(c);
+						}
+					}					
+				}					
+		}			
 		return adicionado;
 	}
 	public boolean deletarCartaoCredito(String numero) {
 		boolean ret = false;
 		if (numero != null) {
-			ret = this.cardRepo.delCartaoCredito(numero);
+			ret = this.cartRepo.delCartaoCredito(numero);
 		}
 		return ret;		
 	}
