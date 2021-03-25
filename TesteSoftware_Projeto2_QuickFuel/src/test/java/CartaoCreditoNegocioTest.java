@@ -41,7 +41,6 @@ public class CartaoCreditoNegocioTest {
 		CartaoCredito c = new CartaoCredito("MASTERCARD","123412341",2025,2);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
-//		cn.adicionarCartaoCredito(c);
 		
 		boolean ret = cn.adicionarCartaoCredito(c);
 		assertFalse(ret);
@@ -53,7 +52,6 @@ public class CartaoCreditoNegocioTest {
 		CartaoCredito c = new CartaoCredito("MASTERCARD","8888222244446WX6",2025,2);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
-//		cn.adicionarCartaoCredito(c);
 		
 		boolean ret = cn.adicionarCartaoCredito(c);
 		assertFalse(ret);
@@ -65,7 +63,6 @@ public class CartaoCreditoNegocioTest {
 		CartaoCredito c = new CartaoCredito("TICKET","3333333333333333",2025,9);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
-//		cn.adicionarCartaoCredito(c);
 		
 		boolean ret = cn.adicionarCartaoCredito(c);
 		assertFalse(ret);
@@ -76,36 +73,35 @@ public class CartaoCreditoNegocioTest {
 		CartaoCredito c = new CartaoCredito("VISA","1234123412341239",2021,2);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
-//		cn.adicionarCartaoCredito(c);
 		
 		boolean ret = cn.adicionarCartaoCredito(c);
 		assertFalse(ret);
 //		System.out.println(ret);
 	}
+	/* Teste Cartao Expirado*/
 	@Test
 	public void adicionarCartaoNumeroNulo() {
 		CartaoCredito c = new CartaoCredito("VISA",null,2025,1);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
-//		cn.adicionarCartaoCredito(c);
 		
 		boolean ret = cn.adicionarCartaoCredito(c);
 		assertFalse(ret);
 	}
 		
-		/* Teste deletar cartão de credito*/
-		
-	@Test
-		
+	/* Teste deletar cartão de credito*/		
+	@Test		
 	public void deletarCartaoCreditoioTest() {
-		CartaoCredito c = new CartaoCredito("VISA","5555555555555555",2025,1);
+		CartaoCredito c = new CartaoCredito("VISA","5555666677778888",2025,1);
 		CartaoCreditoRepositorio cartRepo = new CartaoCreditoRepositorio();
 		CartaoCreditoNegocio cn = new CartaoCreditoNegocio(cartRepo);
+		
 			boolean ret = cn.adicionarCartaoCredito(c);
 			if (ret) {
-				ret = cn.deletarCartaoCredito("55555");
+				ret = cn.deletarCartaoCredito("5555666677778888");
 			}
 			assertTrue(ret);
+			System.out.println(c.getNumero());
 			
 	}
 	

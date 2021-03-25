@@ -78,7 +78,7 @@ public class VeiculoNegocioTest {
 		
 		boolean ret = un.adicionarVeiculo(v);
 		assertFalse(ret);
-	}
+	}	
 	/* Teste de veiculo ano modelo formato inválido*/
 	@Test
 	public void adcionarVeiculoAnoModeloNuloTest() {
