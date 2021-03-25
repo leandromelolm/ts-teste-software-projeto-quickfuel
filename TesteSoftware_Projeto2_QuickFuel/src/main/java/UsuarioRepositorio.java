@@ -33,4 +33,15 @@ public class UsuarioRepositorio {
 	public List<Usuario> buscarTodos() {
 		return this.usuarios;
 	}
+
+	public boolean delUsuario(String cpf) {
+		Usuario u = this.buscarPorCPF(cpf);
+		
+		try {
+			this.usuarios.remove(u);
+		} catch (Exception ex) {
+			return false;
+		}
+		return true;
+	}	
 }

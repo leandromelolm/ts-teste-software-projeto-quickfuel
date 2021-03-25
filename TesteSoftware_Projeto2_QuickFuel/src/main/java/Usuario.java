@@ -1,25 +1,33 @@
 package main.java;
 
+
 import java.util.Date;
-import java.util.List;
 
 public class Usuario {
 
-	private String nomecompleto;
-	private String cpf;
-	private String email;
-	private Date nasc;
-	private List<placaveiculo> placaveiculos;
-	private String senha;
-	private String telefone;
-	private int ddd;
+	protected String nomecompleto;
+	protected String cpf;
+	protected String email;
+	protected Date nasc;
+	protected Veiculo veiculo;
+	protected String senha;
+	protected String telefone;
+	protected int ddd;
+	protected CartaoCredito cartaocredito;
 
-	public Usuario(String nomecompleto, String cpf, String email, int ddd, String telefone) {
+	public Usuario(
+			String nomecompleto,
+			String cpf, 
+			String email, 
+			int ddd, 
+			String telefone, 
+			String senha) {
 		this.nomecompleto = nomecompleto;
 		this.email = email;
 		this.cpf = cpf;
 		this.ddd = ddd;
 		this.telefone = telefone;
+		this.senha =  senha;
 	}
 
 	public String getNomeCompleto() {
@@ -77,12 +85,30 @@ public class Usuario {
 		this.ddd = ddd;
 	}
 
-	public List<placaveiculo> getPlacaveiculos() {
-		return placaveiculos;
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
 
-	public void setPlacaveiculos(List<placaveiculo> placaveiculos) {
-		this.placaveiculos = placaveiculos;
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
+
+	public String getNomecompleto() {
+		return nomecompleto;
+	}
+
+	public void setNomecompleto(String nomecompleto) {
+		this.nomecompleto = nomecompleto;
+	}
+
+	public CartaoCredito getCartaocredito() {
+		return cartaocredito;
+	}
+
+	public void setCartaocredito(CartaoCredito cartaocredito) {
+		this.cartaocredito = cartaocredito;
+		this.cartaocredito.setDono(this);
+	}
+	
 
 }

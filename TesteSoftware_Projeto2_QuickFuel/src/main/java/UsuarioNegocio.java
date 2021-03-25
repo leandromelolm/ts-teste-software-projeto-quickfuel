@@ -1,5 +1,7 @@
 package main.java;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class UsuarioNegocio {
@@ -15,18 +17,35 @@ public class UsuarioNegocio {
 	
 		int numeroddd = u.getDdd();
 		String d = Integer.toString(numeroddd);
+		
+		String n = u.getTelefone();
+		int numeroconvertido = Integer.parseInt(n);	
+//		System.out.println(numeroconvertido);
+//		Date dataAtualSistema = new Date(System.currentTimeMillis());
+//		System.out.println(dataAtualSistema);
+//		int ano = LocalDate.now(). getYear ();
+//		int mes = LocalDate.now().getMonthValue();
+//		System.out.print(ano +"  " + mes + "  " );
 
-		if (u.getNomeCompleto() != null && 
-				u.getEmail() != null  && 
-				u.getCpf() != null &&
-				u.getCpf().length() == 11 &&
-				u.getDdd() > 10  &&
-				u.getDdd() < 100 &&
-				d.length() == 2 &&
-				u.getTelefone() != null &&
-				u.getTelefone().length() == 9 &&
-				this.userRepo.buscarPorCPF(u.getCpf()) == null) {
+		if (	u.getNomeCompleto() != null 
+			&&	u.getEmail() != null  
+			&&	u.getEmail().contains("@")
+			&&	u.getCpf() != null 
+			&&	u.getCpf().length() == 11 
+			&&	d.length() == 2
+			&& 	u.getTelefone() != null
+			&&	u.getTelefone().length() == 9
+			&& 	u.getTelefone().contains("-") == false
+			&&	this.userRepo.buscarPorCPF(u.getCpf()) == null) {
+			if (	u.getSenha().contains("@") 
+				 || u.getSenha().contains("#")
+				 || u.getSenha().contains("$")
+				 || u.getSenha().contains("&")
+				 || u.getSenha().contains("*")
+				 || u.getSenha().contains("?")
+				 || u.getSenha().contains("!") == true){
 			adicionado = this.userRepo.addUsuario(u);
+			}
 		}
 		return adicionado;
 	}
@@ -36,9 +55,13 @@ public class UsuarioNegocio {
 	}
 
 	public boolean deletarUsuario(String cpf) {
-		return false;
+		boolean ret = false;
+		if(cpf != null) {
+			ret = this.userRepo.delUsuario(cpf);
+		}
+		return ret;	
 	}
-
+	
 	public boolean atualizarUsuario(Usuario u) {
 		return false;
 	}
