@@ -6,13 +6,13 @@ public class CartaoCredito {
 	private String bandeira;
 	private String numero;
 	private int dataExpiracaoAno;
-	private int dataExpiracaoMes;
+	private String dataExpiracaoMes;
 		
 	public CartaoCredito(
 			String bandeira, 
 			String numero, 
 			int dataExpiracaoAno,
-			int dataExpiracaoMes) {
+			String dataExpiracaoMes) {
 		this.bandeira = bandeira;
 		this.numero = numero;
 		this.dataExpiracaoAno = dataExpiracaoAno;
@@ -52,11 +52,11 @@ public class CartaoCredito {
 		this.dataExpiracaoAno = dataExpiracaoAno;
 	}
 
-	public int getDataExpiracaoMes() {
+	public String getDataExpiracaoMes() {
 		return dataExpiracaoMes;
 	}
 
-	public void setDataExpiracaoMes(int dataExpiracaoMes) {
+	public void setDataExpiracaoMes(String dataExpiracaoMes) {
 		this.dataExpiracaoMes = dataExpiracaoMes;
 	}
 	

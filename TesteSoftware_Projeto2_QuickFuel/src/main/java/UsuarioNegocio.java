@@ -1,7 +1,5 @@
 package main.java;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class UsuarioNegocio {
@@ -17,14 +15,6 @@ public class UsuarioNegocio {
 	
 		int numeroddd = u.getDdd();
 		String d = Integer.toString(numeroddd);
-		
-		String n = u.getTelefone();
-		int numeroconvertido = Integer.parseInt(n);	
-//		System.out.println(numeroconvertido);
-//		Date dataAtualSistema = new Date(System.currentTimeMillis());
-//		System.out.println(dataAtualSistema);
-
-
 
 		if (	u.getNomeCompleto() != null 
 			&&	u.getEmail() != null  
@@ -34,6 +24,7 @@ public class UsuarioNegocio {
 			&&	d.length() == 2
 			&& 	u.getTelefone() != null
 			&&	u.getTelefone().length() == 9
+			&&	u.getTelefone().matches("[0-9]+")// Regex "[0-9]+" verifica se contém apenas números.
 			&& 	u.getTelefone().contains("-") == false
 			&&	this.userRepo.buscarPorCPF(u.getCpf()) == null) {
 			if (	u.getSenha().contains("@") 

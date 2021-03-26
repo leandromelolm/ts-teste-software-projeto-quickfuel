@@ -68,7 +68,7 @@ public class UsuarioNegocioTest {
 	}
 	
 	/* Teste de telefone nulo*/
-	@Test (expected =  NumberFormatException.class)
+	@Test 
 	public void adicionarUsuarioTelefoneNuloTest() {
 		Usuario u = new Usuario("Usuario Teste", "22222222222", "testequickfuel2@gmail.com", 80 , null, "senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
@@ -89,7 +89,7 @@ public class UsuarioNegocioTest {
 		assertFalse(ret);
 	}
 	/* Teste de telefone com  "-" números*/
-	@Test (expected =  NumberFormatException.class)
+	@Test 
 	public void adicionarUsuarioTelefoneFormatoInvalido2Test() {
 		Usuario u = new Usuario("Usuario Teste", "33333333333", "testequickfuel2@gmail.com", 80 ,"8765-4321", "senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
@@ -122,7 +122,7 @@ public class UsuarioNegocioTest {
 	}
 	
 	/* Teste de telefone com  Letras*/
-	@Test (expected =  NumberFormatException.class)
+	@Test 
 	public void adicionarUsuarioTelefoneComLetras() {
 		Usuario u = new Usuario("Usuario Teste", "66666666666", "testequickfuel2@.gmail.com", 80 ,"BT7654321", "senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
@@ -144,25 +144,35 @@ public class UsuarioNegocioTest {
 	/* Teste deletar usuário*/
 	@Test
 	public void deletarUsuarioTest() {
-		Usuario u = new Usuario("Usuario Teste", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
+		Usuario u = new Usuario("Fulano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
 		boolean ret = un.adicionarUsuario(u);
+		System.out.println("Teste *deletarUsuarioTest()*");
+		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
 		if (ret) {
 			ret = un.deletarUsuario("12345678900");
+			System.out.println("Usuário Deletado com Sucesso!");
 		}
+		System.out.println("Resultado do Teste:" + ret);
+		System.out.println("");
 		assertTrue(ret);
 	}
 	/* Teste deletar usuário cpf nulo*/
 	@Test
 	public void deletarUsuarioNuloTest() {
-		Usuario u = new Usuario("Usuario Teste", null, "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
+		Usuario u = new Usuario("Beltrano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
 		boolean ret = un.adicionarUsuario(u);
+		System.out.println("Teste *deletarUsuarioNuloTest()*");
+		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
 		if (ret) {
-			ret = un.deletarUsuario("1234");
+			ret = un.deletarUsuario(null);
+			System.out.println("Usuário Não deletado");
 		}
+		System.out.println("Resultado do Teste:" + ret);
+		System.out.println("");
 		assertFalse(ret);
 	}
 }
