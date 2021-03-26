@@ -32,16 +32,17 @@ public class CartaoCreditoNegocio {
 
 		if (c.getNumero() != null 
 				&& c.getNumero().length() == 16 
-				&& c.getNumero().matches("[0-9]+")
+				&& c.getNumero().matches("[0-9]+") // Verifica se está entre 0 e 9 os números do cartão
 				&& c.getBandeira() != null 
 				&& this.cartRepo.buscarPorNumero(c.getNumero()) == null) {
-			if (c.getBandeira().contains("VISA") 
+			if (
+					   c.getBandeira().contains("VISA") 
 					|| c.getBandeira().contains("MASTERCARD")
 					|| c.getBandeira().contains("ELO") 
 					|| c.getBandeira().contains("HIPERCARD")
 					|| c.getBandeira().contains("AMERICAN EXPRESS")) {
 				if (c.getDataExpiracaoAno() > ano) {
-					adicionado = this.cartRepo.addCartaoCredito(c);
+					adicionado = this.cartRepo.addCartaoCredito(c); //se ANO não for MAIOR que o ano atual, a lógica vai para o else
 
 				} else {
 					if (c.getDataExpiracaoAno() == ano 

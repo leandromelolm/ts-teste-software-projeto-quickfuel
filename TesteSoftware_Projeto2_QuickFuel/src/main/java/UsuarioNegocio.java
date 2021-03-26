@@ -24,18 +24,17 @@ public class UsuarioNegocio {
 			&&	d.length() == 2
 			&& 	u.getTelefone() != null
 			&&	u.getTelefone().length() == 9
-			&&	u.getTelefone().matches("[0-9]+")// Regex "[0-9]+" verifica se contém apenas números.
+			/* 
+			 * getTelefone().matches("[0-9]+") contém um regex que verifica se a String passada contém apenas números. */
+			&&	u.getTelefone().matches("[0-9]+")
+			/* 
+			 * getSenha().matches("(?=.*\\p{Digit})(?=.*\\p{Upper})(?=.*\\p{Lower})(?=.*\\p{Punct}).{8,12}") 
+			 * contém  um regex que verifica se a String senha passada contem, pelo menos: 
+			 * 1 Numero, 1 caractere de pontuação, 1 letra minúscula e 1 maiúscula */
+			&& 	u.getSenha().matches("(?=.*\\p{Digit})(?=.*\\p{Upper})(?=.*\\p{Lower})(?=.*\\p{Punct}).{8,12}") 
 			&& 	u.getTelefone().contains("-") == false
-			&&	this.userRepo.buscarPorCPF(u.getCpf()) == null) {
-			if (	u.getSenha().contains("@") 
-				 || u.getSenha().contains("#")
-				 || u.getSenha().contains("$")
-				 || u.getSenha().contains("&")
-				 || u.getSenha().contains("*")
-				 || u.getSenha().contains("?")
-				 || u.getSenha().contains("!") == true){
+			&&	this.userRepo.buscarPorCPF(u.getCpf()) == null){	
 			adicionado = this.userRepo.addUsuario(u);
-			}
 		}
 		return adicionado;
 	}

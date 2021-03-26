@@ -23,7 +23,7 @@ public class UsuarioNegocioMockTest {
 
 	@Test
 	public void adicionarUsuarioVerifyTest() {
-		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
+		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha$1234");
 		when(userRepo.buscarPorCPF("12345678901")).thenReturn(null);
 		when(userRepo.addUsuario(u)).thenReturn(true);
 
@@ -35,7 +35,7 @@ public class UsuarioNegocioMockTest {
 
 	@Test
 	public void adicionarUsuarioExistenteVerifyTest() {
-		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "senha!1234@");
+		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234");
 		when(userRepo.buscarPorCPF("12345678901")).thenReturn(u);
 
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);

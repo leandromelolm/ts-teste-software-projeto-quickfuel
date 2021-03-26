@@ -12,7 +12,8 @@ public class VeiculoNegocio {
 	public boolean adicionarVeiculo(Veiculo v) {
 		boolean adicionado = false;
 
-		if (v.getPlacaveiculo().length() == 7
+		if (
+				   v.getPlacaveiculo().length() == 7
 				&& v.getEstado().length() == 2
 				&& v.getCor() != null
 				&& v.getMarca() != null
@@ -23,8 +24,8 @@ public class VeiculoNegocio {
 				&& v.getAnofabricacao() > 1950
 				&& v.getAnofabricacao() <= 2021 
 				&& this.autoRepo.buscarPorPlaca(v.getPlacaveiculo()) == null){
-			if (v.getEstado().contains("PE")
-			|| v.getEstado().contains("AC")
+			if(
+			   v.getEstado().contains("AC")
 			|| v.getEstado().contains("AP")
 			|| v.getEstado().contains("AM")
 			|| v.getEstado().contains("BA")
@@ -37,6 +38,7 @@ public class VeiculoNegocio {
 			|| v.getEstado().contains("MS")
 			|| v.getEstado().contains("MG")
 			|| v.getEstado().contains("PA")
+			|| v.getEstado().contains("PE")
 			|| v.getEstado().contains("PB")
 			|| v.getEstado().contains("PR")
 			|| v.getEstado().contains("PE")
