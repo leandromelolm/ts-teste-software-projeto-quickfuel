@@ -34,49 +34,22 @@ public class UsuarioRepositorio {
 	public List<Usuario> buscarTodos() {
 		return this.usuarios;
 	}
-	
-//	public boolean updateUsuario(Usuario usur) {
-//		boolean ret = false;
-//		for (Usuario aux: this.usuarios) {
-//			if (aux.getCpf() == usur.getCpf()) {
-//				aux.setNomecompleto(usur.getNomecompleto());
-//				aux.setTelefone(usur.getTelefone());
-//				return ret;
-//			}
-//		}
-//		return true;
-//	}
-	
-	
-//	public boolean updateUsuario(String cpf) {
-//		boolean ret = false;
-//		Usuario u = this.buscarPorCPF(cpf);
-//		if (u != null) {
-//			this.usuarios.indexOf(u);
-//			this.usuarios.remove(u);
-//		}
-//		return ret;
-//	}
 
-
-		public boolean atualizarUsuario(String cpf) {
-			
-			Usuario u = this.buscarPorCPF(cpf);
-			
-				if (u.getCpf().equals(cpf)) {
-//					usuarios.remove(usuario1);
-//					usuarios.add(usuario1);
-					String cpf2 = u.getCpf();
-					int cpfInt = Integer.parseInt(cpf2);
-					usuarios.get(cpfInt).setCpf(cpf2);
-					usuarios.get(cpfInt).setNomecompleto(cpf2);
-
-				}
-						return true;
-		}		
-	
+	/*
+	public boolean atualizarUsuario(String cpf) {
+		Usuario u = this.buscarPorCPF(cpf);
 		
-	public boolean delUsuario(String cpf) {
+		try {
+			this.usuarios.remove(u);
+			this.addUsuario(u);
+		} catch (Exception ex) {
+			return false;
+		}
+		return true;
+	}		
+	*/
+		
+	public boolean deletUsuario(String cpf) {
 		Usuario u = this.buscarPorCPF(cpf);
 		
 		try {

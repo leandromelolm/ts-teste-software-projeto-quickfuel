@@ -46,11 +46,12 @@ public class UsuarioNegocio {
 	public boolean deletarUsuario(String cpf) {
 		boolean ret = false;
 		if(cpf != null) {
-			ret = this.userRepo.delUsuario(cpf);
+			ret = this.userRepo.deletUsuario(cpf);
 		}
 		return ret;	
 	}
 	
+	/*
 	public boolean atualizarUsuario(String cpf) {
 		boolean editado = false;
 		
@@ -60,16 +61,7 @@ public class UsuarioNegocio {
 		
 		return editado;
 	}
-	
-	
-//	public boolean atualizarUsuario2(Usuario usur){
-//		boolean ret = false;
-//		if(usur != null) {
-//			ret = this.userRepo.updateUsuario(usur);
-//		}
-//		return ret;	
-//
-//	}
+	*/
 
 	public List<Usuario> relatorioUsuariosPorNomeParcial(String nomeParcial) {
 		return null;

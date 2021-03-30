@@ -178,28 +178,4 @@ public class UsuarioNegocioTest {
 
 		assertFalse(ret);
 	}
-	
-	
-	@Test
-	public void atualizarUsuarioTest() {
-		Usuario u = new Usuario("Fulano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
-		UsuarioRepositorio userRepo = new UsuarioRepositorio();
-		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
-		boolean ret = un.adicionarUsuario(u);
-//		System.out.println("Teste *deletarUsuarioTest()*");
-//		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
-		if (ret) {
-			Usuario u2 = new Usuario("Fulano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
-			UsuarioRepositorio userRepo2 = new UsuarioRepositorio();
-			UsuarioNegocio un2 = new UsuarioNegocio(userRepo2);		
-			boolean ret2 = un2.atualizarUsuario("12345678999");
-			assertTrue(ret2);
-		}
-//		System.out.println("Resultado do Teste:" + ret + "\n");
-		assertTrue(ret);
-		
-	}
-	
-	
-	
 }
