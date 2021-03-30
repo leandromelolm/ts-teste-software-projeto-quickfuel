@@ -51,9 +51,25 @@ public class UsuarioNegocio {
 		return ret;	
 	}
 	
-	public boolean atualizarUsuario(Usuario u) {
-		return false;
+	public boolean atualizarUsuario(String cpf) {
+		boolean editado = false;
+		
+		if (cpf != null) {
+			editado = this.userRepo.atualizarUsuario(cpf);
+		}
+		
+		return editado;
 	}
+	
+	
+//	public boolean atualizarUsuario2(Usuario usur){
+//		boolean ret = false;
+//		if(usur != null) {
+//			ret = this.userRepo.updateUsuario(usur);
+//		}
+//		return ret;	
+//
+//	}
 
 	public List<Usuario> relatorioUsuariosPorNomeParcial(String nomeParcial) {
 		return null;

@@ -14,23 +14,24 @@ public class UsuarioNegocioTest {
 	/* Teste de cadastro de usuário*/
 	@Test
 	public void adicionarUsuarioTest() {
-		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!4321@");
-		UsuarioRepositorio userRepo = new UsuarioRepositorio();
-		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
-		boolean ret = un.adicionarUsuario(u);
+		Usuario u2 = new Usuario("Leandro Teste1", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!4321@");
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un2 = new UsuarioNegocio(userRepo);
+		boolean ret = un2.adicionarUsuario(u2);
+		
 		assertTrue(ret);
 	}
 	
 	/* Teste de usuário já cadastrado*/
 	@Test
 	public void adicionarUsuarioExistenteTest() {
-		Usuario u = new Usuario("Usuario Teste", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		Usuario u2 = new Usuario("Usuario Teste2", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
-		un.adicionarUsuario(u);
+		un.adicionarUsuario(u2);
 		
-		boolean ret = un.adicionarUsuario(u);
+		boolean ret = un.adicionarUsuario(u2);
 		assertFalse(ret);
 	}
 	
@@ -131,6 +132,7 @@ public class UsuarioNegocioTest {
 		boolean ret = un.adicionarUsuario(u);
 		assertFalse(ret);
 	}
+	
 	/* Teste de Senha Fraca*/
 	@Test 
 	public void adicionarUsuarioSenhaFraca() {
@@ -141,6 +143,7 @@ public class UsuarioNegocioTest {
 		boolean ret = un.adicionarUsuario(u);
 		assertFalse(ret);
 	}
+	
 	/* Teste deletar usuário*/
 	@Test
 	public void deletarUsuarioTest() {
@@ -148,16 +151,16 @@ public class UsuarioNegocioTest {
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
 		boolean ret = un.adicionarUsuario(u);
-		System.out.println("Teste *deletarUsuarioTest()*");
-		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
+//		System.out.println("Teste *deletarUsuarioTest()*");
+//		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
 		if (ret) {
 			ret = un.deletarUsuario("12345678900");
-			System.out.println("Usuário Deletado com Sucesso!");
+//			System.out.println("Usuário Deletado com Sucesso!");
 		}
-		System.out.println("Resultado do Teste:" + ret);
-		System.out.println("");
+//		System.out.println("Resultado do Teste:" + ret + "\n");
 		assertTrue(ret);
 	}
+	
 	/* Teste deletar usuário cpf nulo*/
 	@Test
 	public void deletarUsuarioNuloTest() {
@@ -165,14 +168,38 @@ public class UsuarioNegocioTest {
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
 		boolean ret = un.adicionarUsuario(u);
-		System.out.println("Teste *deletarUsuarioNuloTest()*");
-		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
+//		System.out.println("Teste *deletarUsuarioNuloTest()*");
+//		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
 		if (ret) {
 			ret = un.deletarUsuario(null);
-			System.out.println("Usuário Não deletado");
+//			System.out.println("Usuário Não deletado");
 		}
-		System.out.println("Resultado do Teste:" + ret);
-		System.out.println("");
+//		System.out.println("Resultado do Teste:" + ret + "\n");
+
 		assertFalse(ret);
 	}
+	
+	
+	@Test
+	public void atualizarUsuarioTest() {
+		Usuario u = new Usuario("Fulano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
+		boolean ret = un.adicionarUsuario(u);
+//		System.out.println("Teste *deletarUsuarioTest()*");
+//		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
+		if (ret) {
+			Usuario u2 = new Usuario("Fulano Deleterio", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+			UsuarioRepositorio userRepo2 = new UsuarioRepositorio();
+			UsuarioNegocio un2 = new UsuarioNegocio(userRepo2);		
+			boolean ret2 = un2.atualizarUsuario("12345678999");
+			assertTrue(ret2);
+		}
+//		System.out.println("Resultado do Teste:" + ret + "\n");
+		assertTrue(ret);
+		
+	}
+	
+	
+	
 }

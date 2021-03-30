@@ -23,6 +23,7 @@ public class UsuarioRepositorio {
 	public Usuario buscarPorCPF(String cpf) {
 		Usuario u = null;
 		for (Usuario user : this.usuarios) {
+			System.out.println("Usuário  adcionado : " + user.nomecompleto);
 			if (user.getCpf().equals(cpf)) {
 				u = user;
 			}
@@ -34,15 +35,47 @@ public class UsuarioRepositorio {
 		return this.usuarios;
 	}
 	
-//	public boolean editUsuario(String cpf) {
-//		boolean ret = false
+//	public boolean updateUsuario(Usuario usur) {
+//		boolean ret = false;
+//		for (Usuario aux: this.usuarios) {
+//			if (aux.getCpf() == usur.getCpf()) {
+//				aux.setNomecompleto(usur.getNomecompleto());
+//				aux.setTelefone(usur.getTelefone());
+//				return ret;
+//			}
+//		}
+//		return true;
+//	}
+	
+	
+//	public boolean updateUsuario(String cpf) {
+//		boolean ret = false;
 //		Usuario u = this.buscarPorCPF(cpf);
 //		if (u != null) {
-//			this.usuarios.
+//			this.usuarios.indexOf(u);
+//			this.usuarios.remove(u);
 //		}
-//		return false;
+//		return ret;
 //	}
 
+
+		public boolean atualizarUsuario(String cpf) {
+			
+			Usuario u = this.buscarPorCPF(cpf);
+			
+				if (u.getCpf().equals(cpf)) {
+//					usuarios.remove(usuario1);
+//					usuarios.add(usuario1);
+					String cpf2 = u.getCpf();
+					int cpfInt = Integer.parseInt(cpf2);
+					usuarios.get(cpfInt).setCpf(cpf2);
+					usuarios.get(cpfInt).setNomecompleto(cpf2);
+
+				}
+						return true;
+		}		
+	
+		
 	public boolean delUsuario(String cpf) {
 		Usuario u = this.buscarPorCPF(cpf);
 		
