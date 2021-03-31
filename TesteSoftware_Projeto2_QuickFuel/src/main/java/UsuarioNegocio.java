@@ -46,9 +46,17 @@ public class UsuarioNegocio {
 	public boolean deletarUsuario(String cpf) {
 		boolean ret = false;
 		if(cpf != null) {
-			ret = this.userRepo.deletUsuario(cpf);
+			ret = this.userRepo.deleteUsuario(cpf);
 		}
 		return ret;	
+	}
+	
+	public boolean alterarUsuario(String nomecompleto, String cpf, String email, int ddd, String telefone, String senha) {
+		boolean ret = false;
+		if (cpf != null ) {
+			ret = this.userRepo.AlteraDadosUsuario(nomecompleto, cpf, email, ddd, telefone, senha);
+		}
+		return ret;
 	}
 	
 	/*

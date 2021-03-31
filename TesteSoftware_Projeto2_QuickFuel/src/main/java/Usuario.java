@@ -4,16 +4,16 @@ package main.java;
 import java.util.Date;
 
 public class Usuario {
-
+	private int id;
 	protected String nomecompleto;
 	protected String cpf;
 	protected String email;
 	protected Date nasc;
-	protected Veiculo veiculo;
 	protected String senha;
 	protected String telefone;
 	protected int ddd;
 	protected CartaoCredito cartaocredito;
+	protected Veiculo veiculo;
 
 	public Usuario(
 			String nomecompleto,
@@ -108,7 +108,39 @@ public class Usuario {
 	public void setCartaocredito(CartaoCredito cartaocredito) {
 		this.cartaocredito = cartaocredito;
 		this.cartaocredito.setDono(this);
+	}	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		return true;
 	}
 	
-
 }

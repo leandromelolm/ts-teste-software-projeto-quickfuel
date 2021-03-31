@@ -99,14 +99,14 @@ public class VeiculoNegocioTest {
 		VeiculoRepositorio autoRepo = new VeiculoRepositorio();
 		VeiculoNegocio vn = new VeiculoNegocio(autoRepo);		
 		boolean ret = vn.adicionarVeiculo(v);
-		System.out.println("Teste *deletarVeiculoTest()*");
-		System.out.println("Placa: " + v.getPlacaveiculo() + " Marca: " + v.getMarca());
+//		System.out.println("Teste *deletarVeiculoTest()*");
+//		System.out.println("Placa: " + v.getPlacaveiculo() + " Marca: " + v.getMarca());
 		if (ret) {
 			ret = vn.deletarVeiculo("KKK0007");
-			System.out.println("Veiculo deletado com sucesso!");
+//			System.out.println("Veiculo deletado com sucesso! /n");
 		}
-		System.out.println("Resultado do Teste:" + ret);
-		System.out.println("");
+//		System.out.println("Resultado do Teste:" + ret);
+
 		assertTrue(ret);
 	}
 	
