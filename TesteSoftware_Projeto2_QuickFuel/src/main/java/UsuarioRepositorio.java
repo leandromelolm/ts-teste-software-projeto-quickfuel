@@ -24,7 +24,7 @@ public class UsuarioRepositorio {
 	public Usuario buscarPorCPF(String cpf) {
 		Usuario u = null;
 		for (Usuario user : this.usuarios) {	
-			System.out.println("Usuario Buscado : " + user.getNomecompleto() + "  " + user.getEmail() + "  " + user.hashCode());
+//			System.out.println("Usuario Buscado (pesquisado) : " + user.getNomecompleto() + "  " + user.getEmail() + " hasCode:  " + user.hashCode());
 			if (user.getCpf().equals(cpf)) {
 				u = user;
 			}
@@ -35,24 +35,8 @@ public class UsuarioRepositorio {
 	public List<Usuario> buscarTodos() {
 		return this.usuarios;
 	}
-
-	/*
-	public boolean atualizarUsuario(String cpf) {
-		Usuario u = this.buscarPorCPF(cpf);
-		
-		try {
-			this.usuarios.remove(u);
-			this.addUsuario(u);
-		} catch (Exception ex) {
-			return false;
-		}
-		return true;
-	}		
-	*/
 	
-	
-	public boolean AlteraDadosUsuario(String nomecompleto, String cpf, String email, int ddd, String telefone, String senha) {
-		
+	public boolean AlteraDadosUsuario(String nomecompleto, String cpf, String email, int ddd, String telefone, String senha) {		
 		try {
 			for (Usuario u2 : usuarios) {
 		         if (u2.getCpf().equals(cpf)) {
@@ -62,7 +46,15 @@ public class UsuarioRepositorio {
 		              u2.setTelefone(telefone);
 		              u2.setSenha(senha);
 		              
-		  			System.out.println("Usuário alterado : " + u2.nomecompleto + "  " + u2.getEmail());
+		  			System.out.println("\n"+"Usuário alterado com sucesso!");
+		  					System.out.println(
+		  					  "CPF:" + u2.getCpf() +"\n"
+		  					+ "Nome: " + u2.getNomecompleto() +"\n" 		  					
+		  					+ "Email: "  + u2.getEmail() +"\n" 
+		  					+ "ddd: "  + u2.getDdd() +"\n"
+		  					+ "Telefone: "  + u2.getTelefone() +"\n"
+		  					+ "HasCode: " + u2.hashCode() +"\n"
+		  					);
 		         }
 			}	    
 		} catch (Exception ex) {
@@ -72,8 +64,7 @@ public class UsuarioRepositorio {
 	}
 		
 	public boolean deleteUsuario(String cpf) {
-		Usuario u = this.buscarPorCPF(cpf);
-		
+		Usuario u = this.buscarPorCPF(cpf);		
 		try {
 			this.usuarios.remove(u);
 		} catch (Exception ex) {

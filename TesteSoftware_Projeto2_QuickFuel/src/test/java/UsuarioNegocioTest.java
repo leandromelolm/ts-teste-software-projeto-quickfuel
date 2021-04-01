@@ -15,22 +15,23 @@ public class UsuarioNegocioTest {
 	@Test
 	public void adicionarUsuarioTest() {
 		
-		Usuario u = new Usuario("Usuario Teste 1", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!4321@");
+		Usuario u = new Usuario("Usuario Teste 01", "12345678901", "teste1@gmail.com", 80 ,"999999999", "Senha!4321@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
+
 		boolean ret = un.adicionarUsuario(u);
 		
 		assertTrue(ret);
 	}
 	
-	/* Teste de usuário já cadastrado*/
+	/* Teste de usuário já cadastrado (CPF repetido)*/
 	@Test
 	public void adicionarUsuarioExistenteTest() {
-		Usuario u = new Usuario("Usuario Teste 2", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
-		Usuario u2 = new Usuario("Usuario Teste 2.1", "12345678901", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@"); // CPF igual ao usuario teste 2
+		Usuario u1 = new Usuario("Usuario Teste 02", "12345678988", "teste2adicionado@gmail.com", 80 ,"999999999", "Senha!1234@");
+		Usuario u2 = new Usuario("Usuario Teste 92", "12345678988", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@"); // CPF igual ao usuario teste 2
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
-		un.adicionarUsuario(u); 
+		un.adicionarUsuario(u1); 
 		
 		boolean ret = un.adicionarUsuario(u2); // tentando adcionar usuario existente
 		assertFalse(ret);
@@ -39,7 +40,7 @@ public class UsuarioNegocioTest {
 	/* Teste de Email Nulo*/
 	@Test
 	public void adicionarUsuarioEmailNuloTest() {
-		Usuario u = new Usuario("Usuario Teste 3", "11111111111", null, 80 ,"999999999", "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 03", "11111111111", null, 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -50,7 +51,7 @@ public class UsuarioNegocioTest {
 	/* Teste de CPF nulo*/
 	@Test
 	public void adicionarUsuarioCPFINuloTest() {
-		Usuario u = new Usuario("Usuario Teste 4", null, "testequickfuel2@gmail.com", 80 ,"999999999", "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 04", null, "testequickfuel2@gmail.com", 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -61,7 +62,7 @@ public class UsuarioNegocioTest {
 	/* Teste de CPF com quantidade de números inválidos*/
 	@Test
 	public void adicionarUsuarioCPFInvalidoTest() {
-		Usuario u = new Usuario("Usuario Teste 5", "123456", "testequickfuel2@gmail.com", 80 ,"999999999", "Senha!1234@"); // CPF com caracteres < 11
+		Usuario u = new Usuario("Usuario Teste 05", "123456", "testequickfuel2@gmail.com", 80 ,"999999999", "Senha!1234@"); // CPF com caracteres < 11
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -72,7 +73,7 @@ public class UsuarioNegocioTest {
 	/* Teste de telefone nulo*/
 	@Test 
 	public void adicionarUsuarioTelefoneNuloTest() {
-		Usuario u = new Usuario("Usuario Teste 6", "22222222222", "testequickfuel2@gmail.com", 80 , null, "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 06", "22222222222", "testequickfuel2@gmail.com", 80 , null, "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -83,7 +84,7 @@ public class UsuarioNegocioTest {
 	/* Teste de telefone com 8 números*/
 	@Test
 	public void adicionarUsuarioTelefoneFormatoInvalidoTest() {
-		Usuario u = new Usuario("Usuario Teste 7", "33333333333", "testequickfuel2@gmail.com", 80 ,"87654321", "Senha!1234@"); // Telefone exige 9 números
+		Usuario u = new Usuario("Usuario Teste 07", "33333333333", "testequickfuel2@gmail.com", 80 ,"87654321", "Senha!1234@"); // Telefone exige 9 números
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -93,7 +94,7 @@ public class UsuarioNegocioTest {
 	/* Teste de telefone com  "-" números*/
 	@Test 
 	public void adicionarUsuarioTelefoneFormatoInvalido2Test() {
-		Usuario u = new Usuario("Usuario Teste 8", "33333333333", "testequickfuel2@gmail.com", 80 ,"8765-4321", "Senha!1234@"); // Telefone só aceita números
+		Usuario u = new Usuario("Usuario Teste 08", "33333333333", "testequickfuel2@gmail.com", 80 ,"8765-4321", "Senha!1234@"); // Telefone só aceita números
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -104,7 +105,7 @@ public class UsuarioNegocioTest {
 	/* Teste de DDD com 3 números*/
 	@Test
 	public void adicionarUsuarioDDDFormatoInvalidoTest() {
-		Usuario u = new Usuario("Usuario Teste 9", "44444444444", "testequickfuel2@gmail.com", 801 ,"987654321", "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 09", "44444444444", "testequickfuel2@gmail.com", 801 ,"987654321", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
@@ -148,7 +149,7 @@ public class UsuarioNegocioTest {
 	/* Teste deletar usuário*/
 	@Test
 	public void deletarUsuarioTest() {
-		Usuario u = new Usuario("Usuario Teste 13 DeletarUsuario", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 13", "12345678900", "testedeletarusuario@gmail.com", 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);		
 		
@@ -166,46 +167,80 @@ public class UsuarioNegocioTest {
 	/* Teste deletar usuário cpf nulo*/
 	@Test
 	public void deletarUsuarioNuloTest() {
-		Usuario u = new Usuario("Usuario Teste 14 DeletarUsuario passando cpf null", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		Usuario u = new Usuario("Usuario Teste 14", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);	
 		
 		boolean ret = un.adicionarUsuario(u);
-//		System.out.println("Teste *deletarUsuarioNuloTest()*");
-//		System.out.println("CPF: " + u.getCpf() + " Nome: " + u.getNomecompleto());
+
 		if (ret) {
 			ret = un.deletarUsuario(null);
 //			System.out.println("Usuário Não deletado");
 		}
 //		System.out.println("Resultado do Teste:" + ret + "\n");
-
 		assertFalse(ret);
 	}
 	
+	/* Teste alterar dados de usuário cadastrado Resultado = True*/	
 	@Test
-	public void editarUsuarioTest() {
-		Usuario u = new Usuario("Usuario Teste 15 EditarUsuario", "12345678900", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+	public void alterarDadosUsuarioTest() {
+		Usuario u = new Usuario("Usuario Teste 15", "81111111199", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
 		UsuarioRepositorio userRepo = new UsuarioRepositorio();
 		UsuarioNegocio un = new UsuarioNegocio(userRepo);
 		
 		boolean ret = un.adicionarUsuario(u);	
 		
-		System.out.println("\n---Teste EditarUsuario---\n");
+		System.out.println("\n---Teste AlterarDadosUsuario---\n");
 		System.out.println("*Usuário Adicionado*");
-		System.out.println("CPF: " + u.getCpf() + "\n"
+		System.out.println(
+				  "CPF: " + u.getCpf() + "\n"
 				+ "Nome: " + u.getNomecompleto() + "\n" 
 				+ "Email: " + u.getEmail() + "\n"
-				+ "Telefone: " + u.getTelefone() + "\n");
+				+ "DDD: " + u.getDdd() + "\n"
+				+ "Telefone: " + u.getTelefone() + "\n"
+				+ "HashCode: " + u.hashCode() + "\n");
 		if (ret) {
-			ret = un.alterarUsuario("Usuario Teste Quinze Editado", "12345678900", "emailNovo@gmail.com", 80 ,"991919191", "Senha!1234@");
-			System.out.println("\n*Usuário Editado*");
-			System.out.println("CPF: " + u.getCpf() + "\n"
-					+ "Nome: " + u.getNomecompleto() + "\n" 
-					+ "Email: " + u.getEmail() + "\n"
-					+ "Telefone: " + u.getTelefone() + "\n");
+			ret = un.alterarUsuario("Usuario Teste Quinze Editado", "81111111199", "emailNovo@gmail.com", 80 ,"991919191", "Senha!1234@");//Alterado Nome, Email e Telefone
+//			System.out.println("\n*Usuário Editado*");
+//			System.out.println(
+//					  "CPF: " + u.getCpf() + "\n"
+//					+ "Nome: " + u.getNomecompleto() + "\n" 
+//					+ "Email: " + u.getEmail() + "\n"
+//					+ "DDD: " + u.getDdd() + "\n"
+//					+ "Telefone: " + u.getTelefone() + "\n");
 		}
-		System.out.println("Resultado do Teste:" + ret + "\n");
+//		System.out.println("Resultado do Teste:" + ret + "\n");
 		assertTrue(ret);
+	}
+	
+	/* Teste alterar CPF do usuário cadastrado - Alteração de CPF não é efetuada no repositorio - Resultado = False*/	
+	@Test
+	public void alterarDadosUsuarioCPFTest() {
+		Usuario u = new Usuario("Usuario Teste 16", "11111111111", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un = new UsuarioNegocio(userRepo);
+		
+		boolean ret = un.adicionarUsuario(u);	
+
+		if (ret) {
+			ret = un.alterarUsuario("Usuario Teste dezesseis", "11111111100", "emailNovo@gmail.com", 80 ,"991919191", "Senha!1234@"); //CPF e Nome alterados
+		}
+		assertFalse(ret); // ret = Falso
+	}
+	
+	/* Teste alterar dados do telefone do usuário cadastrado como nulo - Resultado = False*/	
+	@Test
+	public void alterarDadosUsuarioTelefoneNullTest() {
+		Usuario u = new Usuario("Usuario Teste 17", "11111111199", "testequickfuel@gmail.com", 80 ,"999999999", "Senha!1234@");
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un = new UsuarioNegocio(userRepo);
+		
+		boolean ret = un.adicionarUsuario(u);	
+
+		if (ret) {
+			ret = un.alterarUsuario("Usuario Teste dezessete", "11111111199", "emailNovo@gmail.com", 80 ,null, "Senha!1234@"); //Telefone nulo
+		}
+		assertFalse(ret); // ret = Falso
 	}
 	
 }

@@ -53,23 +53,32 @@ public class UsuarioNegocio {
 	
 	public boolean alterarUsuario(String nomecompleto, String cpf, String email, int ddd, String telefone, String senha) {
 		boolean ret = false;
-		if (cpf != null ) {
+		
+		int numeroddd = ddd;
+		String d = Integer.toString(numeroddd);
+		
+		if (	cpf != null 
+				&&	email != null  
+				&&	email.contains("@")
+				&&	cpf != null 
+				&&	cpf.length() == 11 
+				&&	d.length() == 2
+				&& 	telefone != null
+				&&	telefone.length() == 9
+				/* 
+				 * getTelefone().matches("[0-9]+") contém um regex que verifica se a String passada contém apenas números. */
+				&&	telefone.matches("[0-9]+")
+				/* 
+				 * getSenha().matches("(?=.*\\p{Digit})(?=.*\\p{Upper})(?=.*\\p{Lower})(?=.*\\p{Punct}).{8,12}") 
+				 * contém  um regex que verifica se a String senha passada contem, pelo menos: 
+				 * 1 Numero, 1 caractere de pontuação, 1 letra minúscula e 1 maiúscula */
+				&& 	senha.matches("(?=.*\\p{Digit})(?=.*\\p{Upper})(?=.*\\p{Lower})(?=.*\\p{Punct}).{8,12}") 
+				&& 	telefone.contains("-") == false
+				&&	this.userRepo.buscarPorCPF(cpf) != null) {
 			ret = this.userRepo.AlteraDadosUsuario(nomecompleto, cpf, email, ddd, telefone, senha);
 		}
 		return ret;
 	}
-	
-	/*
-	public boolean atualizarUsuario(String cpf) {
-		boolean editado = false;
-		
-		if (cpf != null) {
-			editado = this.userRepo.atualizarUsuario(cpf);
-		}
-		
-		return editado;
-	}
-	*/
 
 	public List<Usuario> relatorioUsuariosPorNomeParcial(String nomeParcial) {
 		return null;
