@@ -2,7 +2,7 @@ package main.java;
 
 public class CartaoCredito {
 	
-	private Usuario dono;
+	private Usuario nome;
 	private String bandeira;
 	private String numero;
 	private int dataExpiracaoAno;
@@ -19,13 +19,18 @@ public class CartaoCredito {
 		this.dataExpiracaoMes = dataExpiracaoMes;
 	}
 	
-
-	public Usuario getDono() {
-		return dono;
+	public CartaoCredito(String numero, String bandeira) {
+		this.numero = numero;
+		this.bandeira = bandeira;
 	}
 	
-	public void setDono(Usuario dono) {
-		this.dono = dono;
+
+	public Usuario getNome() {
+		return nome;
+	}
+	
+	public void setNome(Usuario nome) {
+		this.nome = nome;
 	}
 	
 	public String getBandeira() {

@@ -9,11 +9,7 @@ import main.java.CartaoCredito;
 import main.java.CartaoCreditoNegocio;
 import main.java.CartaoCreditoRepositorio;
 
-
-
-
 public class CartaoCreditoNegocioTest {
-
     
 	/* Teste Cadastro Cartao Credito*/
 	@Test
@@ -34,7 +30,7 @@ public class CartaoCreditoNegocioTest {
 		boolean ret = cn.adicionarCartaoCredito(c);
 
 		if(ret == false) {			
-			System.out.println(" Resultado do teste adicionarCartaoCreditoAno2021Test foi " + ret + ". Mês expirado!");			
+			System.out.println(" Resultado do teste adicionarCartaoCreditoAno2021Test foi " + ret + ". A validade do cartão expirou!");			
 		}
 		assertTrue(ret);
 	}

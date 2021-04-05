@@ -5,11 +5,39 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import main.java.CartaoCredito;
 import main.java.Usuario;
 import main.java.UsuarioNegocio;
 import main.java.UsuarioRepositorio;
 
 public class UsuarioNegocioTest {
+	
+	@Test // Teste de cadastro de usuário com cartão
+	public void adicionarUsuarioComCartaodeCredito() {
+
+		CartaoCredito numerocartao = new CartaoCredito("1111111111111111", "VISA");
+		Usuario u = new Usuario("Usuario Teste 18","12345678907","teste1@gmail.com",80 ,"999999999","Senha!4321@",numerocartao);
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un = new UsuarioNegocio(userRepo);
+
+		boolean ret = un.adicionarUsuario(u);
+		assertTrue(ret);
+	}
+	
+	@Test // Teste de cadastro e remoção de usuário com cartão
+	public void removerUsuarioComCartaodeCredito() {
+
+		CartaoCredito numerocartao = new CartaoCredito("1111111111111111", "VISA");
+		Usuario u = new Usuario("Usuario Teste 19","55555555555","teste1@gmail.com",80 ,"999999999","Senha!4321@",numerocartao);
+		UsuarioRepositorio userRepo = new UsuarioRepositorio();
+		UsuarioNegocio un = new UsuarioNegocio(userRepo);
+		
+		boolean ret = un.adicionarUsuario(u);
+		if (ret) {
+			ret = un.deletarUsuario("55555555555");
+		}
+		assertTrue(ret);
+	}
 	
 	/* Teste de cadastro de usuário*/
 	@Test

@@ -39,10 +39,6 @@ public class UsuarioNegocio {
 		return adicionado;
 	}
 
-	public List<Usuario> relatorioUsuariosDados() {
-		return this.userRepo.buscarTodos();
-	}
-
 	public boolean deletarUsuario(String cpf) {
 		boolean ret = false;
 		if(cpf != null) {
@@ -78,6 +74,10 @@ public class UsuarioNegocio {
 			ret = this.userRepo.AlteraDadosUsuario(nomecompleto, cpf, email, ddd, telefone, senha);
 		}
 		return ret;
+	}
+	
+	public List<Usuario> relatorioUsuariosDados() {
+		return this.userRepo.buscarTodos();
 	}
 
 	public List<Usuario> relatorioUsuariosPorNomeParcial(String nomeParcial) {

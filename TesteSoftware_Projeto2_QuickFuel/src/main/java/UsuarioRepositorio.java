@@ -14,28 +14,27 @@ public class UsuarioRepositorio {
 	public boolean addUsuario(Usuario u) {
 		try {
 			this.usuarios.add(u);
-//			System.out.println("Usuário  adicionado : " + u.getNomecompleto() + "  " + u.getEmail() + "  " + u.hashCode());
+			if (u.getCartaocredito() == null) {
+				System.out.println("Usuário  adicionado: " 
+						+ " Nome: " + u.getNomecompleto() 
+						+ " Email: " + u.getEmail() 
+						+ " HashCode: "+ u.hashCode()); 	
+			}if ((u.getCartaocredito() != null)) {	
+				System.out.println("Usuário  adicionado: "  
+						+ " Nome: " + u.getNomecompleto() 
+						+ " Email: " + u.getEmail()
+						+ " HashCode: "+ u.hashCode()+ "  "
+						+ " Número Cartão: "+ u.getCartaocredito().getNumero() 
+						+ " Bandeira: " + u.getCartaocredito().getBandeira());
+					}
+					
+			
 		} catch (Exception ex) {
 			return false;
 		}
 		return true;
 	}
-
-	public Usuario buscarPorCPF(String cpf) {
-		Usuario u = null;
-		for (Usuario user : this.usuarios) {	
-//			System.out.println("Usuario Buscado (pesquisado) : " + user.getNomecompleto() + "  " + user.getEmail() + " hasCode:  " + user.hashCode());
-			if (user.getCpf().equals(cpf)) {
-				u = user;
-			}
-		}
-		return u;
-	}
-
-	public List<Usuario> buscarTodos() {
-		return this.usuarios;
-	}
-	
+		
 	public boolean AlteraDadosUsuario(String nomecompleto, String cpf, String email, int ddd, String telefone, String senha) {		
 		try {
 			for (Usuario u2 : usuarios) {
@@ -67,9 +66,39 @@ public class UsuarioRepositorio {
 		Usuario u = this.buscarPorCPF(cpf);		
 		try {
 			this.usuarios.remove(u);
+			if (u.getCartaocredito() == null) {
+				System.out.println("Usuário  removido: " 
+						+ " Nome: " + u.getNomecompleto() 
+						+ " Email: " + u.getEmail() 
+						+ " HashCode: "+ u.hashCode()); 
+			}if ((u.getCartaocredito() != null)) {	
+				System.out.println("Usuário  removido: "  
+						+ " Nome: " + u.getNomecompleto() 
+						+ " Email: " + u.getEmail()
+						+ " HashCode: "+ u.hashCode()+ "  "
+						+ " Número Cartão: "+ u.getCartaocredito().getNumero() 
+						+ " Bandeira: " + u.getCartaocredito().getBandeira());
+			}
 		} catch (Exception ex) {
 			return false;
 		}
 		return true;
 	}	
+	
+	public Usuario buscarPorCPF(String cpf) {
+		Usuario u = null;
+		for (Usuario user : this.usuarios) {	
+//			System.out.println("Usuario Buscado (pesquisado) : " + user.getNomecompleto() + "  " + user.getEmail() + " hasCode:  " + user.hashCode());
+			if (user.getCpf().equals(cpf)) {
+				u = user;
+			}
+		}
+		return u;
+	}
+
+	public List<Usuario> buscarTodos() {
+		return this.usuarios;
+	}
+	
+	
 }

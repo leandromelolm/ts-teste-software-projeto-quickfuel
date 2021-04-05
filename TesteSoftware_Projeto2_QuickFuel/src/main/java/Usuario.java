@@ -30,6 +30,22 @@ public class Usuario {
 		this.senha =  senha;
 	}
 
+	public Usuario (String nomecompleto,
+			String cpf,
+			String email, 
+			int ddd, 
+			String telefone, 
+			String senha,
+			CartaoCredito cartaocredito) {		
+		this.nomecompleto = nomecompleto;
+		this.email = email;
+		this.cpf = cpf;
+		this.ddd = ddd;
+		this.telefone = telefone;
+		this.senha =  senha;		
+		this.cartaocredito = cartaocredito;	
+	}
+	
 	public String getNomeCompleto() {
 		return nomecompleto;
 	}
@@ -107,7 +123,7 @@ public class Usuario {
 
 	public void setCartaocredito(CartaoCredito cartaocredito) {
 		this.cartaocredito = cartaocredito;
-		this.cartaocredito.setDono(this);
+		this.cartaocredito.setNome(this);
 	}	
 
 	public int getId() {
@@ -120,6 +136,7 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
+
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
